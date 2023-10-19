@@ -45,15 +45,16 @@ class ScrollableGamesWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  game.title,
-                  maxLines: 2,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: _height * 0.05,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
+                if (_showTitle)
+                  Text(
+                    game.title,
+                    maxLines: 2,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: _height * 0.05,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
               ],
             ),
           );

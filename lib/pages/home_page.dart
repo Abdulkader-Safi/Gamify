@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           _topBarWidget(),
           SizedBox(
-            height: _deviceHeight * 0.13,
+            height: _deviceHeight * 0.12,
           ),
           _featuredGamesInfoWidget(),
           Padding(
@@ -109,6 +109,12 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           _featuredGameBannerWidget(),
+          ScrollableGamesWidget(
+            _deviceHeight * 0.22,
+            _deviceWidth,
+            false,
+            games2,
+          ),
         ],
       ),
     );
@@ -167,7 +173,7 @@ class _HomePageState extends State<HomePage> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: _deviceHeight * 0.01),
+          // SizedBox(height: _deviceHeight * 0.01),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
