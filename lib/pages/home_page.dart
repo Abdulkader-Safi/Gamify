@@ -94,6 +94,9 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _topBarWidget(),
+          SizedBox(
+            height: _deviceHeight * 0.13,
+          ),
           _featuredGamesInfoWidget(),
         ],
       ),
