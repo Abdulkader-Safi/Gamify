@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_viewer/data.dart';
+import 'package:movie_viewer/widgets/scrollable_games_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -98,6 +99,15 @@ class _HomePageState extends State<HomePage> {
             height: _deviceHeight * 0.13,
           ),
           _featuredGamesInfoWidget(),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: _deviceWidth * 0.01),
+            child: ScrollableGamesWidget(
+              _deviceHeight * 0.24,
+              _deviceWidth,
+              true,
+              games,
+            ),
+          ),
         ],
       ),
     );
