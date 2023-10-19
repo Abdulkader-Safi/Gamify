@@ -40,6 +40,11 @@ class _HomePageState extends State<HomePage> {
       height: _deviceHeight * 0.5,
       width: _deviceWidth,
       child: PageView(
+        onPageChanged: (index) {
+          setState(() {
+            _selectedGame = index;
+          });
+        },
         scrollDirection: Axis.horizontal,
         children: featuredGames.map((game) {
           return Container(
@@ -89,6 +94,7 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _topBarWidget(),
+          _featuredGamesInfoWidget(),
         ],
       ),
     );
@@ -123,6 +129,48 @@ class _HomePageState extends State<HomePage> {
                 size: 30,
               ),
             ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _featuredGamesInfoWidget() {
+    return SizedBox(
+      height: _deviceHeight * 0.14,
+      width: _deviceWidth,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            featuredGames[_selectedGame].title,
+            maxLines: 2,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: _deviceHeight * 0.04,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: _deviceHeight * 0.01),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: featuredGames.map((game) {
+              bool isActive = game.title == featuredGames[_selectedGame].title;
+              double circleRadius = _deviceHeight * 0.004;
+              return Container(
+                margin: EdgeInsets.only(right: _deviceWidth * 0.015),
+                height: circleRadius * 2,
+                width: circleRadius * 2,
+                decoration: BoxDecoration(
+                  color: isActive ? Colors.green : Colors.grey,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              );
+            }).toList(),
           )
         ],
       ),
